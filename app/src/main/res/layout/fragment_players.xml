@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundGray"
+    tools:context=".Fragment.PlayersFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlPlayers"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true">
+
+            <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/togglePlayers"
+                custom:toggleWidth="100dp"
+                android:fontFamily="@font/circularstd_medium"
+                custom:cornerRadius="20dp"
+                android:elevation="5dp"
+                custom:textToggleLeft="CSK"
+                custom:textToggleRight="MI"
+                style="@style/MyCustomText"
+                custom:activeBgColor="@android:color/black"
+                custom:activeTextColor="@android:color/white"
+                custom:inactiveBgColor="@android:color/white"
+                custom:inactiveTextColor="@android:color/black"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textEleven"
+                    android:text="Playing XI"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextGray"
+                    android:textSize="@dimen/textSize14" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycleplayingEleven"
+                    android:background="@android:color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textBench"
+                    android:text="Bench"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/colorTextGray"
+                    android:textSize="@dimen/textSize14" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycleBench"
+                    android:background="@android:color/white" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

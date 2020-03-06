@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:src="@drawable/title"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:layout_width="150dp"
+            android:layout_height="?actionBarSize"/>
+
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/rl"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view_linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.gauravk.bubblenavigation.BubbleNavigationLinearView
+        android:id="@+id/bottom_navigation_view_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="15dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:layout_weight="1"
+            android:id="@+id/l_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/colorAccent"
+            app:bt_colorInactive="@android:color/white"
+            app:bt_icon="@drawable/ic_home"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="Home"
+            app:bt_padding="8dp"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:layout_weight="1"
+            android:id="@+id/l_item_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/colorAccent"
+            app:bt_colorInactive="@android:color/white"
+            app:bt_icon="@drawable/ic_match"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="Matches"
+            app:bt_padding="8dp"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:layout_weight="1"
+            android:id="@+id/l_item_highlights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/colorAccent"
+            app:bt_colorInactive="@android:color/white"
+            app:bt_icon="@drawable/ic_highlights"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="Highlights"
+            app:bt_padding="8dp"/>
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:layout_weight="1"
+            android:id="@+id/l_item_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/colorAccent"
+            app:bt_colorInactive="@android:color/white"
+            app:bt_icon="@drawable/ic_more"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="More"
+            app:bt_padding="8dp"/>
+
+    </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

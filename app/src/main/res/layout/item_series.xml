@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSeriesMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingTop="12dp"
+        android:background="@color/backgroundGray"/>
+
+    <TextView
+        android:id="@+id/txtSeriesName"
+        android:text="ICC World Cup 2020"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round_rectangle"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
+        android:layout_centerHorizontal="true"
+        android:elevation="5dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/circularstd_medium"/>
+
+</RelativeLayout>

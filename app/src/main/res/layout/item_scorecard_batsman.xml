@@ -1,0 +1,117 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativebatsman">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewBatsmanItem"
+            android:text="Rohit"
+            android:fontFamily="@font/circularstd_medium"
+            android:textColor="@android:color/black"
+            android:singleLine="true"
+            android:padding="3dp"
+            android:textSize="@dimen/textSize14"
+            android:layout_marginTop="8dp"
+            android:layout_marginHorizontal="2dp"
+            android:layout_toLeftOf="@+id/linearScoreBatsmanitem" />
+
+        <TextView
+            android:id="@+id/textviewOutDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:padding="3dp"
+            android:textColor="@color/colorTextGray"
+            android:text="c &amp; b H. pandya "
+            android:layout_marginHorizontal="2dp"
+            android:layout_marginVertical="3dp"
+            android:layout_below="@+id/textviewBatsmanItem"
+            android:singleLine="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearScoreBatsmanitem"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewRunItem"
+                android:textColor="@android:color/black"
+                android:gravity="end"
+                android:text="111"
+                android:padding="3dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="2dp"
+                android:textSize="@dimen/textSize14"
+                />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewBowlItem"
+                android:textColor="@color/colorTextGray"
+                android:gravity="end"
+                android:text="40"
+                android:padding="3dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="2dp"
+                android:textSize="@dimen/textSize14"
+                />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewFourItem"
+                android:textColor="@color/colorTextGray"
+                android:gravity="end"
+                android:text="12"
+                android:padding="3dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="2dp"
+                android:textSize="@dimen/textSize14"
+                />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewSixItem"
+                android:textColor="@color/colorTextGray"
+                android:gravity="end"
+                android:text="7"
+                android:padding="3dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="2dp"
+                android:textSize="@dimen/textSize14"
+                />
+
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewStrikeRateItem"
+                android:gravity="end"
+                android:text="277.50"
+                android:textColor="@color/colorTextGray"
+                android:padding="3dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="2dp"
+                android:textSize="@dimen/textSize14"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
