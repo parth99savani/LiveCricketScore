@@ -27,6 +27,8 @@ import com.popseven.livecricketscore.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,9 +71,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         adapter = new LiveMatchAdapter(getActivity(), matchList, new LiveMatchAdapter.LiveMatchAdapterListener() {
             @Override
             public void onLiveMatchSelected(String matchId) {
-                Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
-                intent.putExtra("matchId", matchId);
-                startActivity(intent);
+
+                presentActivity(getView(),matchId);
+
+//                Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
+//                intent.putExtra("matchId", matchId);
+//                startActivity(intent);
             }
         });
 
@@ -88,6 +93,19 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
         return view;
+    }
+
+    public void presentActivity(View view, String matchId) {
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(getActivity(), view, "transition");
+        int revealX = (int) (view.getX() + view.getWidth() / 2);
+        int revealY = (int) (view.getY() + view.getHeight() / 2);
+
+        Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
+        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_X, revealX);
+        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+        intent.putExtra("matchId", matchId);
+        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
     }
 
     @Override

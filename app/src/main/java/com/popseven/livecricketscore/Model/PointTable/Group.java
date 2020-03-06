@@ -22,6 +22,39 @@ public class Group {
     @SerializedName("Group A")
     @Expose
     private List<GroupA> groupA = null;
+    @SerializedName("Elite Group A and B")
+    @Expose
+    private List<EliteGroupAAndB> eliteGroupAAndB = null;
+    @SerializedName("Elite Group C")
+    @Expose
+    private List<EliteGroupC> eliteGroupC = null;
+    @SerializedName("Plate")
+    @Expose
+    private List<Plate> plate = null;
+
+    public List<EliteGroupAAndB> getEliteGroupAAndB() {
+        return eliteGroupAAndB;
+    }
+
+    public void setEliteGroupAAndB(List<EliteGroupAAndB> eliteGroupAAndB) {
+        this.eliteGroupAAndB = eliteGroupAAndB;
+    }
+
+    public List<EliteGroupC> getEliteGroupC() {
+        return eliteGroupC;
+    }
+
+    public void setEliteGroupC(List<EliteGroupC> eliteGroupC) {
+        this.eliteGroupC = eliteGroupC;
+    }
+
+    public List<Plate> getPlate() {
+        return plate;
+    }
+
+    public void setPlate(List<Plate> plate) {
+        this.plate = plate;
+    }
 
     public List<Team> getTeams() {
         return teams;
