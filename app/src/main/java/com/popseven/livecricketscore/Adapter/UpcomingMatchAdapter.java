@@ -93,6 +93,12 @@ public class UpcomingMatchAdapter extends RecyclerView.Adapter<UpcomingMatchAdap
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(k).getColorCode()));
                         holder.btnTeam1.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam1.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorAccent));
+                        holder.btnTeam1.setBackground(buttonDrawable);
                     }
                 }
             }
@@ -103,6 +109,12 @@ public class UpcomingMatchAdapter extends RecyclerView.Adapter<UpcomingMatchAdap
                         Drawable buttonDrawable = holder.btnTeam2.getBackground();
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(k).getColorCode()));
+                        holder.btnTeam2.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam2.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorPrimary));
                         holder.btnTeam2.setBackground(buttonDrawable);
                     }
                 }

@@ -62,13 +62,13 @@ public class MatchScoreActivity extends AppCompatActivity {
     private TeamColorList teamColorList = new TeamColorList();
     private List<TeamColor> colorList = new ArrayList<>();
 
-    public static final String EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X";
-    public static final String EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y";
-
-    View rootLayout;
-
-    private int revealX;
-    private int revealY;
+//    public static final String EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X";
+//    public static final String EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y";
+//
+//    View rootLayout;
+//
+//    private int revealX;
+//    private int revealY;
 
 
     @Override
@@ -91,35 +91,34 @@ public class MatchScoreActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             matchId = bundle.getString("matchId");
-
             loadData();
 
         }
 
-        rootLayout = findViewById(R.id.root_layout);
-
-        final Intent intent = getIntent();
-
-        if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                intent.hasExtra(EXTRA_CIRCULAR_REVEAL_X) && intent.hasExtra(EXTRA_CIRCULAR_REVEAL_Y)) {
-            rootLayout.setVisibility(View.INVISIBLE);
-
-            revealX = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_X, 0);
-            revealY = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_Y, 0);
-
-            ViewTreeObserver viewTreeObserver = rootLayout.getViewTreeObserver();
-            if (viewTreeObserver.isAlive()) {
-                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        revealActivity(revealX, revealY);
-                        rootLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    }
-                });
-            }
-        } else {
-            rootLayout.setVisibility(View.VISIBLE);
-        }
+//        rootLayout = findViewById(R.id.root_layout);
+//
+//        final Intent intent = getIntent();
+//
+//        if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+//                intent.hasExtra(EXTRA_CIRCULAR_REVEAL_X) && intent.hasExtra(EXTRA_CIRCULAR_REVEAL_Y)) {
+//            rootLayout.setVisibility(View.INVISIBLE);
+//
+//            revealX = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_X, 0);
+//            revealY = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_Y, 0);
+//
+//            ViewTreeObserver viewTreeObserver = rootLayout.getViewTreeObserver();
+//            if (viewTreeObserver.isAlive()) {
+//                viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                    @Override
+//                    public void onGlobalLayout() {
+//                        revealActivity(revealX, revealY);
+//                        rootLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//                    }
+//                });
+//            }
+//        } else {
+//            rootLayout.setVisibility(View.VISIBLE);
+//        }
 
         adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new LiveFragment(matchId), "Live");
@@ -139,44 +138,44 @@ public class MatchScoreActivity extends AppCompatActivity {
 
     }
 
-    protected void revealActivity(int x, int y) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            float finalRadius = (float) (Math.max(rootLayout.getWidth(), rootLayout.getHeight()) * 1.1);
+//    protected void revealActivity(int x, int y) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            float finalRadius = (float) (Math.max(rootLayout.getWidth(), rootLayout.getHeight()) * 1.1);
+//
+//            // create the animator for this view (the start radius is zero)
+//            Animator circularReveal = ViewAnimationUtils.createCircularReveal(rootLayout, x, y, 0, finalRadius);
+//            circularReveal.setDuration(600);
+//            circularReveal.setInterpolator(new AccelerateInterpolator());
+//
+//            // make the view visible and start the animation
+//            rootLayout.setVisibility(View.VISIBLE);
+//            circularReveal.start();
+//        } else {
+//            finish();
+//        }
+//    }
 
-            // create the animator for this view (the start radius is zero)
-            Animator circularReveal = ViewAnimationUtils.createCircularReveal(rootLayout, x, y, 0, finalRadius);
-            circularReveal.setDuration(600);
-            circularReveal.setInterpolator(new AccelerateInterpolator());
-
-            // make the view visible and start the animation
-            rootLayout.setVisibility(View.VISIBLE);
-            circularReveal.start();
-        } else {
-            finish();
-        }
-    }
-
-    protected void unRevealActivity() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            finish();
-        } else {
-            float finalRadius = (float) (Math.max(rootLayout.getWidth(), rootLayout.getHeight()) * 1.1);
-            Animator circularReveal = ViewAnimationUtils.createCircularReveal(
-                    rootLayout, revealX, revealY, finalRadius, 0);
-
-            circularReveal.setDuration(600);
-            circularReveal.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    rootLayout.setVisibility(View.INVISIBLE);
-                    finish();
-                }
-            });
-
-
-            circularReveal.start();
-        }
-    }
+//    protected void unRevealActivity() {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+//            finish();
+//        } else {
+//            float finalRadius = (float) (Math.max(rootLayout.getWidth(), rootLayout.getHeight()) * 1.1);
+//            Animator circularReveal = ViewAnimationUtils.createCircularReveal(
+//                    rootLayout, revealX, revealY, finalRadius, 0);
+//
+//            circularReveal.setDuration(600);
+//            circularReveal.addListener(new AnimatorListenerAdapter() {
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    rootLayout.setVisibility(View.INVISIBLE);
+//                    finish();
+//                }
+//            });
+//
+//
+//            circularReveal.start();
+//        }
+//    }
 
     @Override
     public void onResume() {
@@ -237,6 +236,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                 buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                 DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                                 btnTeam1.setBackground(buttonDrawable);
+                                break;
+                            }else {
+                                Drawable buttonDrawable = btnTeam1.getBackground();
+                                buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorAccent));
+                                btnTeam1.setBackground(buttonDrawable);
                             }
                         }
                         btnTeam2.setText(match.getTeam2().getSName());
@@ -245,6 +250,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                 Drawable buttonDrawable = btnTeam2.getBackground();
                                 buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                 DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                                btnTeam2.setBackground(buttonDrawable);
+                                break;
+                            }else {
+                                Drawable buttonDrawable = btnTeam2.getBackground();
+                                buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorGreen));
                                 btnTeam2.setBackground(buttonDrawable);
                             }
                         }
@@ -261,6 +272,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                                     btnTeam1.setBackground(buttonDrawable);
+                                    break;
+                                }else {
+                                    Drawable buttonDrawable = btnTeam1.getBackground();
+                                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                    DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorAccent));
+                                    btnTeam1.setBackground(buttonDrawable);
                                 }
                             }
                         } else if (match.getBatTeam().getId().equals(match.getTeam2().getId())) {
@@ -270,6 +287,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                     Drawable buttonDrawable = btnTeam1.getBackground();
                                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                                    btnTeam1.setBackground(buttonDrawable);
+                                    break;
+                                }else {
+                                    Drawable buttonDrawable = btnTeam1.getBackground();
+                                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                    DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorAccent));
                                     btnTeam1.setBackground(buttonDrawable);
                                 }
                             }
@@ -290,6 +313,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                                     btnTeam2.setBackground(buttonDrawable);
+                                    break;
+                                }else {
+                                    Drawable buttonDrawable = btnTeam2.getBackground();
+                                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                    DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorGreen));
+                                    btnTeam2.setBackground(buttonDrawable);
                                 }
                             }
                         } else if (match.getBowTeam().getId().equals(match.getTeam2().getId())) {
@@ -299,6 +328,12 @@ public class MatchScoreActivity extends AppCompatActivity {
                                     Drawable buttonDrawable = btnTeam2.getBackground();
                                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                                    btnTeam2.setBackground(buttonDrawable);
+                                    break;
+                                }else {
+                                    Drawable buttonDrawable = btnTeam2.getBackground();
+                                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                                    DrawableCompat.setTint(buttonDrawable, getResources().getColor(R.color.colorGreen));
                                     btnTeam2.setBackground(buttonDrawable);
                                 }
                             }

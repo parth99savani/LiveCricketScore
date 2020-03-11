@@ -118,13 +118,14 @@ public class PlayersFragment extends Fragment {
                 MatchDetail matchDetail = gson.fromJson(response, MatchDetail.class);
 
                 if (matchDetail.getPlayers() == null) {
-
+                    rlPlayers.setVisibility(View.GONE);
                 } else {
+                    rlPlayers.setVisibility(View.VISIBLE);
                     playerList.addAll(matchDetail.getPlayers());
                 }
 
                 if (matchDetail.getTeam1().getSName() == null) {
-
+                    rlPlayers.setVisibility(View.GONE);
                 } else {
                     if (matchDetail.getTeam2().getSName() == null) {
                         rlPlayers.setVisibility(View.GONE);
@@ -134,7 +135,6 @@ public class PlayersFragment extends Fragment {
                         labels.add(matchDetail.getTeam2().getSName());
                         togglePlayers.setLabels(labels);
                         rlPlayers.setVisibility(View.VISIBLE);
-
                         loadPlayerTeam1();
 
                         togglePlayers.setOnToggleSwitchChangeListener(new ToggleSwitch.OnToggleSwitchChangeListener(){
@@ -189,16 +189,19 @@ public class PlayersFragment extends Fragment {
                     if (matchDetail.getTeam1().getSquadBench().size() == 0) {
                         textBench.setVisibility(View.GONE);
                         recycleBench.setVisibility(View.GONE);
+                        togglePlayers.setVisibility(View.GONE);
                     } else {
                         textBench.setText("Players");
                         playerIdList2.addAll(matchDetail.getTeam1().getSquadBench());
                         textBench.setVisibility(View.VISIBLE);
                         recycleBench.setVisibility(View.VISIBLE);
+                        togglePlayers.setVisibility(View.VISIBLE);
                     }
                 } else {
                     playerIdList.addAll(matchDetail.getTeam1().getSquad());
                     textEleven.setVisibility(View.VISIBLE);
                     recycleplayingEleven.setVisibility(View.VISIBLE);
+                    togglePlayers.setVisibility(View.VISIBLE);
                     if (matchDetail.getTeam1().getSquadBench().size() == 0) {
                         textBench.setVisibility(View.GONE);
                         recycleBench.setVisibility(View.GONE);
@@ -249,16 +252,19 @@ public class PlayersFragment extends Fragment {
                     if (matchDetail.getTeam2().getSquadBench().size() == 0) {
                         textBench.setVisibility(View.GONE);
                         recycleBench.setVisibility(View.GONE);
+                        togglePlayers.setVisibility(View.GONE);
                     } else {
                         textBench.setText("Players");
                         playerIdList2.addAll(matchDetail.getTeam2().getSquadBench());
                         textBench.setVisibility(View.VISIBLE);
                         recycleBench.setVisibility(View.VISIBLE);
+                        togglePlayers.setVisibility(View.VISIBLE);
                     }
                 } else {
                     playerIdList.addAll(matchDetail.getTeam2().getSquad());
                     textEleven.setVisibility(View.VISIBLE);
                     recycleplayingEleven.setVisibility(View.VISIBLE);
+                    togglePlayers.setVisibility(View.VISIBLE);
                     if (matchDetail.getTeam2().getSquadBench().size() == 0) {
                         textBench.setVisibility(View.GONE);
                         recycleBench.setVisibility(View.GONE);

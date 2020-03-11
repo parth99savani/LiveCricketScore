@@ -4,11 +4,8 @@ package com.popseven.livecricketscore.Model.Series;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Score {
+public class Inning {
 
-    @SerializedName("team_id")
-    @Expose
-    private String teamId;
     @SerializedName("score")
     @Expose
     private String score;
@@ -18,14 +15,9 @@ public class Score {
     @SerializedName("overs")
     @Expose
     private String overs;
-
-    public String getTeamId() {
-        return teamId;
-    }
-
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
-    }
+    @SerializedName("currentbowlteamscore")
+    @Expose
+    private String currentbowlteamscore;
 
     public String getScore() {
         return score;
@@ -51,4 +43,11 @@ public class Score {
         this.overs = overs;
     }
 
+    public String getCurrentbowlteamscore() {
+        return currentbowlteamscore;
+    }
+
+    public void setCurrentbowlteamscore(String currentbowlteamscore) {
+        this.currentbowlteamscore = currentbowlteamscore;
+    }
 }

@@ -1,6 +1,7 @@
 
 package com.popseven.livecricketscore.Model.MiniCommentary;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,9 +16,18 @@ public class Header {
     @SerializedName("state")
     @Expose
     private String state;
+    @SerializedName("winning_team_id")
+    @Expose
+    private Integer winningTeamId;
     @SerializedName("match_desc")
     @Expose
     private String matchDesc;
+    @SerializedName("mom")
+    @Expose
+    private List<Integer> mom = null;
+    @SerializedName("momNames")
+    @Expose
+    private List<String> momNames = null;
     @SerializedName("type")
     @Expose
     private String type;
@@ -55,12 +65,36 @@ public class Header {
         this.state = state;
     }
 
+    public Integer getWinningTeamId() {
+        return winningTeamId;
+    }
+
+    public void setWinningTeamId(Integer winningTeamId) {
+        this.winningTeamId = winningTeamId;
+    }
+
     public String getMatchDesc() {
         return matchDesc;
     }
 
     public void setMatchDesc(String matchDesc) {
         this.matchDesc = matchDesc;
+    }
+
+    public List<Integer> getMom() {
+        return mom;
+    }
+
+    public void setMom(List<Integer> mom) {
+        this.mom = mom;
+    }
+
+    public List<String> getMomNames() {
+        return momNames;
+    }
+
+    public void setMomNames(List<String> momNames) {
+        this.momNames = momNames;
     }
 
     public String getType() {

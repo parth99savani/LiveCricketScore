@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgroundGray"
+    tools:context=".Fragment.ScorecardMatchFragment">
+
+    <LinearLayout
+        android:id="@+id/llMatchNotStart"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:text="Match is not started"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@drawable/grass_cutter"
+            android:layout_width="250dp"
+            android:layout_height="250dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlScorecard"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true">
+
+            <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                custom:toggleWidth="100dp"
+                android:id="@+id/toggleScoreCard"
+                android:fontFamily="@font/circularstd_medium"
+                custom:cornerRadius="20dp"
+                android:elevation="5dp"
+                custom:textToggleLeft="CSK"
+                custom:textToggleRight="MI"
+                style="@style/MyCustomText"
+                custom:activeBgColor="@android:color/black"
+                custom:activeTextColor="@android:color/white"
+                custom:inactiveBgColor="@android:color/white"
+                custom:inactiveTextColor="@android:color/black"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerSC"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll1"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

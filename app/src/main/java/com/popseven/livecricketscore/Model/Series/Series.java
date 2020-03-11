@@ -13,9 +13,6 @@ public class Series {
     @SerializedName("matches")
     @Expose
     private List<Match> matches = null;
-    @SerializedName("srs_category")
-    @Expose
-    private List<SrsCategory> srsCategory = null;
 
     public Url getUrl() {
         return url;
@@ -31,14 +28,6 @@ public class Series {
 
     public void setMatches(List<Match> matches) {
         this.matches = matches;
-    }
-
-    public List<SrsCategory> getSrsCategory() {
-        return srsCategory;
-    }
-
-    public void setSrsCategory(List<SrsCategory> srsCategory) {
-        this.srsCategory = srsCategory;
     }
 
 }

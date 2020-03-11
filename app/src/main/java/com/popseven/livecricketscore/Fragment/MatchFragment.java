@@ -32,6 +32,7 @@ import com.popseven.livecricketscore.Model.Schedule.Schedule;
 import com.popseven.livecricketscore.Model.Schedule.Series;
 import com.popseven.livecricketscore.Model.Schedule.Team;
 import com.popseven.livecricketscore.R;
+import com.popseven.livecricketscore.SeriesScheduleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -230,6 +231,14 @@ public class MatchFragment extends Fragment {
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
                         snackbar.show();
                     }
+                }, new UpcomingSeriesAdapter.UpcomingSeriesAdapterListener() {
+                    @Override
+                    public void onUpcomingSeriesSelected(String seriesId, String seriesName) {
+                        Intent intent = new Intent(getActivity(), SeriesScheduleActivity.class);
+                        intent.putExtra("SeriesId",seriesId);
+                        intent.putExtra("SeriesName",seriesName);
+                        startActivity(intent);
+                    }
                 });
 
                 recyclerViewUpcomingPastMatches.setAdapter(adapter);
@@ -304,6 +313,14 @@ public class MatchFragment extends Fragment {
                     public void onPastMatchSelected(String matchId) {
                         Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
                         intent.putExtra("matchId", matchId);
+                        startActivity(intent);
+                    }
+                }, new PastSeriesAdapter.PastSeriesAdapterListener() {
+                    @Override
+                    public void onPastSeriesSelected(String seriesId, String seriesName) {
+                        Intent intent = new Intent(getActivity(), SeriesScheduleActivity.class);
+                        intent.putExtra("SeriesId",seriesId);
+                        intent.putExtra("SeriesName",seriesName);
                         startActivity(intent);
                     }
                 });

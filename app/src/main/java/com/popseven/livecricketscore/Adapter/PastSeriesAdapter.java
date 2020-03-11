@@ -42,8 +42,9 @@ public class PastSeriesAdapter extends RecyclerView.Adapter<PastSeriesAdapter.My
     private PastMatchAdapter adapter;
     private List<Match> seriesMatchList;
     private PastMatchAdapter.PastMatchAdapterListener listener;
+    private PastSeriesAdapterListener pastSeriesAdapterListener;
 
-    public PastSeriesAdapter(Context context, List<String> seriesIdList, List<Match> matchList, List<Team> teams, List<Series> series, PastMatchAdapter.PastMatchAdapterListener listener) {
+    public PastSeriesAdapter(Context context, List<String> seriesIdList, List<Match> matchList, List<Team> teams, List<Series> series, PastMatchAdapter.PastMatchAdapterListener listener, PastSeriesAdapterListener pastSeriesAdapterListener) {
         this.context = context;
         this.seriesIdList = seriesIdList;
         this.matchList = matchList;
@@ -51,6 +52,7 @@ public class PastSeriesAdapter extends RecyclerView.Adapter<PastSeriesAdapter.My
         this.series = series;
         colorList = teamColorList.getTeamColorList();
         this.listener = listener;
+        this.pastSeriesAdapterListener = pastSeriesAdapterListener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -81,17 +83,23 @@ public class PastSeriesAdapter extends RecyclerView.Adapter<PastSeriesAdapter.My
 
         seriesMatchList = new ArrayList<>();
 
-        for(int k=0; k<series.size();k++){
-            if(series.get(k).getId().equals(seriesIdList.get(i))){
-                holder.txtSeriesName.setText(series.get(k).getName());
-            }
-        }
+        String seriesName = null;
+
+//        for(int k=0; k<series.size();k++){
+//            if(series.get(k).getId().equals(seriesIdList.get(i))){
+//                holder.txtSeriesName.setText(series.get(k).getName());
+//                seriesName = series.get(k).getName();
+//            }
+//        }
 
         for(int j=0; j<matchList.size(); j++){
             if (matchList.get(j).getSeriesId().equals(seriesIdList.get(i))){
                 seriesMatchList.add(matchList.get(j));
             }
         }
+
+        holder.txtSeriesName.setText(seriesMatchList.get(0).getSeriesName());
+        seriesName = seriesMatchList.get(0).getSeriesName();
 
         adapter = new PastMatchAdapter(context, seriesMatchList,teams,series,listener);
 
@@ -104,12 +112,23 @@ public class PastSeriesAdapter extends RecyclerView.Adapter<PastSeriesAdapter.My
 
         holder.recyclerViewSeriesMatch.setAdapter(adapter);
 
+        final String finalSeriesName = seriesName;
+        holder.txtSeriesName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pastSeriesAdapterListener.onPastSeriesSelected(seriesIdList.get(i), finalSeriesName);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return seriesIdList.size();
+    }
+
+    public interface PastSeriesAdapterListener {
+        void onPastSeriesSelected(String seriesId, String seriesName);
     }
 
 }

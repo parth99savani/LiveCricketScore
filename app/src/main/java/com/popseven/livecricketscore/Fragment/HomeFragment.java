@@ -96,16 +96,17 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     public void presentActivity(View view, String matchId) {
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(getActivity(), view, "transition");
-        int revealX = (int) (view.getX() + view.getWidth() / 2);
-        int revealY = (int) (view.getY() + view.getHeight() / 2);
+//        ActivityOptionsCompat options = ActivityOptionsCompat.
+//                makeSceneTransitionAnimation(getActivity(), view, "transition");
+//        int revealX = (int) (view.getX() + view.getWidth() / 2);
+//        int revealY = (int) (view.getY() + view.getHeight() / 2);
 
         Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
-        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_X, revealX);
-        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+//        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_X, revealX);
+//        intent.putExtra(MatchScoreActivity.EXTRA_CIRCULAR_REVEAL_Y, revealY);
         intent.putExtra("matchId", matchId);
-        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+        startActivity(intent);
+//        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
     }
 
     @Override

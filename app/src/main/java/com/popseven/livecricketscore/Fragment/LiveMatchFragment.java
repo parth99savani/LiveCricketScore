@@ -3,6 +3,13 @@ package com.popseven.livecricketscore.Fragment;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +30,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.popseven.livecricketscore.Adapter.CurrentOverAdapter;
 import com.popseven.livecricketscore.Common.TeamColorList;
-import com.popseven.livecricketscore.Model.LiveMatches.Livematches;
-import com.popseven.livecricketscore.Model.LiveMatches.Match;
 import com.popseven.livecricketscore.Model.MiniCommentary.MiniCommentary;
 import com.popseven.livecricketscore.Model.TeamColor;
 import com.popseven.livecricketscore.R;
@@ -35,19 +40,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class LiveMatchFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
-    private static String URL_DATA = "http://mapps.cricbuzz.com/cbzios/match/livematches";
-    private static String URL_OVER;
     private TextView textviewBatsman;
     private TextView textviewRun;
     private TextView textviewBowl;
@@ -107,10 +104,12 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private TeamColorList teamColorList = new TeamColorList();
     private List<TeamColor> colorList = new ArrayList<>();
     private Button btnTeamWinner;
+    private static String URL_OVER;
+    private static String URL_DATA;
 
-    public LiveFragment(String matchId) {
-        this.matchId = matchId;
+    public LiveMatchFragment(String matchId) {
         // Required empty public constructor
+        this.matchId = matchId;
     }
 
 
@@ -118,7 +117,7 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_live, container, false);
+        View view = inflater.inflate(R.layout.fragment_live_match, container, false);
 
         textviewBatsman = view.findViewById(R.id.textviewBatsman);
         textviewRun = view.findViewById(R.id.textviewRun);
@@ -183,101 +182,17 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         recyclerViewBalls.setAdapter(adapter);
 
         loadData();
-        loadOver();
+        //loadOver();
 
         swipeRefresh.setOnRefreshListener(this);
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
         return view;
-
-    }
-
-    private void loadOver() {
-
-        swipeRefresh.setRefreshing(true);
-
-        URL_OVER = "http://mapps.cricbuzz.com/cbzios/match/" + matchId + "/mini-commentary";
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_OVER, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                //progressDialog.dismiss();
-
-                GsonBuilder gsonBuilder = new GsonBuilder();
-                Gson gson = gsonBuilder.serializeNulls().create();
-                // pass response
-                MiniCommentary miniCommentary = gson.fromJson(response, MiniCommentary.class);
-
-                ballList.clear();
-
-                if(miniCommentary.getCommLines()==null){
-
-                }else {
-                    if (miniCommentary.getCommLines().size() > 0) {
-                        ballList.addAll(miniCommentary.getCommLines().get(0).getOSummary());
-                    }
-                }
-
-                if (miniCommentary.getCrr() == null) {
-                    textviewCRR.setVisibility(View.GONE);
-                    textviewCRR1.setVisibility(View.GONE);
-                } else {
-                    textviewCRR1.setText(miniCommentary.getCrr());
-                    textviewCRR.setVisibility(View.VISIBLE);
-                    textviewCRR1.setVisibility(View.VISIBLE);
-                }
-
-                if (miniCommentary.getRrr() == null) {
-                    textviewRRR.setVisibility(View.GONE);
-                    textviewRRR1.setVisibility(View.GONE);
-                } else {
-                    textviewRRR1.setText(miniCommentary.getRrr());
-                    textviewRRR.setVisibility(View.VISIBLE);
-                    textviewRRR1.setVisibility(View.VISIBLE);
-                }
-
-
-                adapter.notifyDataSetChanged();
-
-                swipeRefresh.setRefreshing(false);
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        handler.postDelayed(runnable = new Runnable() {
-            public void run() {
-                //do your function;
-                //progressBar.setVisibility(View.VISIBLE);
-                loadData();
-                loadOver();
-                handler.postDelayed(runnable, apiDelayed);
-            }
-        }, apiDelayed); // so basically after your getHeroes(), from next time it will be 5 sec repeated
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        handler.removeCallbacks(runnable); //stop handler when activity not visible
     }
 
     private void loadData() {
+
+        URL_DATA="http://mapps.cricbuzz.com/cbzios/match/" + matchId + "/mini-commentary";
 
         swipeRefresh.setRefreshing(true);
 
@@ -291,17 +206,17 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 GsonBuilder gsonBuilder = new GsonBuilder();
                 Gson gson = gsonBuilder.serializeNulls().create();
                 // pass response
-                Livematches livematches = gson.fromJson(response, Livematches.class);
+                MiniCommentary match = gson.fromJson(response, MiniCommentary.class);
 
-                Match match = null;
+                //Match match = null;
 
-                for (int i = 0; i < livematches.getMatches().size(); i++) {
-                    if (livematches.getMatches().get(i).getMatchId().equals(matchId)) {
-                        match = livematches.getMatches().get(i);
-                    }
-                }
+//                for (int i = 0; i < series.getMatches().size(); i++) {
+//                    if (series.getMatches().get(i).getMatchId().equals(matchId)) {
+//                        match = series.getMatches().get(i);
+//                    }
+//                }
 
-                if(match==null){
+                if(match.getHeader()==null){
 
                 }else {
 
@@ -448,11 +363,11 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         if (match.getHeader().getMomNames().size() > 0) {
                             txtMOM.setText(match.getHeader().getMomNames().get(0));
 
-                            if (String.valueOf(match.getHeader().getWinningTeamId()).equals(match.getTeam1().getId())) {
-                                btnTeamWinner.setText(match.getTeam1().getSName());
+                            if (String.valueOf(match.getHeader().getWinningTeamId()).equals(match.getBatTeam().getId())) {
+                                btnTeamWinner.setText(match.getBatTeam().getName());
                                 llMOM.setVisibility(View.VISIBLE);
-                            }else if(String.valueOf(match.getHeader().getWinningTeamId()).equals(match.getTeam2().getId())) {
-                                btnTeamWinner.setText(match.getTeam2().getSName());
+                            }else if(String.valueOf(match.getHeader().getWinningTeamId()).equals(match.getBowTeam().getId())) {
+                                btnTeamWinner.setText(match.getBowTeam().getName());
                                 llMOM.setVisibility(View.VISIBLE);
                             }else {
 
@@ -474,6 +389,37 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
                 }
 
+                ballList.clear();
+
+                if(match.getCommLines()==null){
+
+                }else {
+                    if (match.getCommLines().size() > 0) {
+                        ballList.addAll(match.getCommLines().get(0).getOSummary());
+                    }
+                }
+
+                if (match.getCrr() == null) {
+                    textviewCRR.setVisibility(View.GONE);
+                    textviewCRR1.setVisibility(View.GONE);
+                } else {
+                    textviewCRR1.setText(match.getCrr());
+                    textviewCRR.setVisibility(View.VISIBLE);
+                    textviewCRR1.setVisibility(View.VISIBLE);
+                }
+
+                if (match.getRrr() == null) {
+                    textviewRRR.setVisibility(View.GONE);
+                    textviewRRR1.setVisibility(View.GONE);
+                } else {
+                    textviewRRR1.setText(match.getRrr());
+                    textviewRRR.setVisibility(View.VISIBLE);
+                    textviewRRR1.setVisibility(View.VISIBLE);
+                }
+
+
+                adapter.notifyDataSetChanged();
+
 
                 swipeRefresh.setRefreshing(false);
 
@@ -492,7 +438,6 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onRefresh() {
-        loadData();
-        loadOver();
+
     }
 }

@@ -1,3 +1,4 @@
+
 package com.popseven.livecricketscore.Model.MiniCommentary;
 
 import com.google.gson.annotations.Expose;

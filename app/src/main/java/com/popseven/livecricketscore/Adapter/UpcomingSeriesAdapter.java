@@ -32,8 +32,9 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
     private UpcomingMatchAdapter adapter;
     private List<Match> seriesMatchList;
     private UpcomingMatchAdapter.UpcomingMatchAdapterListener listener;
+    private UpcomingSeriesAdapterListener upcomingSeriesAdapterListener;
 
-    public UpcomingSeriesAdapter(Context context, List<String> seriesIdList, List<Match> matchList, List<Team> teams, List<Series> series, UpcomingMatchAdapter.UpcomingMatchAdapterListener listener) {
+    public UpcomingSeriesAdapter(Context context, List<String> seriesIdList, List<Match> matchList, List<Team> teams, List<Series> series, UpcomingMatchAdapter.UpcomingMatchAdapterListener listener, UpcomingSeriesAdapterListener upcomingSeriesAdapterListener) {
         this.context = context;
         this.seriesIdList = seriesIdList;
         this.matchList = matchList;
@@ -41,6 +42,7 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
         this.series = series;
         colorList = teamColorList.getTeamColorList();
         this.listener = listener;
+        this.upcomingSeriesAdapterListener = upcomingSeriesAdapterListener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -71,9 +73,12 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
 
         seriesMatchList = new ArrayList<>();
 
+        String seriesName = null;
+
         for(int k=0; k<series.size();k++){
             if(series.get(k).getId().equals(seriesIdList.get(i))){
                 holder.txtSeriesName.setText(series.get(k).getName());
+                seriesName = series.get(k).getName();
             }
         }
 
@@ -83,7 +88,7 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
             }
         }
 
-        adapter = new UpcomingMatchAdapter(context, seriesMatchList,teams,series,listener);
+        adapter = new UpcomingMatchAdapter(context, seriesMatchList, teams, series, listener);
 
         holder.recyclerViewSeriesMatch.setHasFixedSize(true);
 
@@ -91,12 +96,23 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
 
         holder.recyclerViewSeriesMatch.setAdapter(adapter);
 
+        final String finalSeriesName = seriesName;
+        holder.txtSeriesName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                upcomingSeriesAdapterListener.onUpcomingSeriesSelected(seriesIdList.get(i), finalSeriesName);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
         return seriesIdList.size();
+    }
+
+    public interface UpcomingSeriesAdapterListener {
+        void onUpcomingSeriesSelected(String seriesId, String seriesName);
     }
 
 }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rl"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".ScheduleActivity">
+    tools:context=".SeriesScheduleActivity">
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:background="@color/colorPrimary"
@@ -22,26 +23,40 @@
             android:layout_height="?actionBarSize"/>
 
         <TextView
-            android:text="Schedule"
+            android:id="@+id/txtSeriesName"
+            android:text="Series Name"
             android:textSize="20sp"
             android:fontFamily="@font/circularstd_medium"
             android:textColor="@android:color/white"
             android:gravity="center"
+            android:singleLine="true"
             android:layout_width="wrap_content"
             android:layout_height="?actionBarSize"/>
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewSeriesType"
+        android:id="@+id/recyclerViewSeriesSchedule"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewSeriesList"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/btnMoveTop"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_arrow_upward_black_24dp"
+        android:background="@drawable/bg_circle"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
-</LinearLayout>
+</RelativeLayout>

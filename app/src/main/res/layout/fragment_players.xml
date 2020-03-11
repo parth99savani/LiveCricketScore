@@ -30,6 +30,7 @@
                 android:fontFamily="@font/circularstd_medium"
                 custom:cornerRadius="20dp"
                 android:elevation="5dp"
+                android:visibility="gone"
                 custom:textToggleLeft="CSK"
                 custom:textToggleRight="MI"
                 style="@style/MyCustomText"

@@ -30,9 +30,9 @@ public class MatchDetail {
     @SerializedName("venue")
     @Expose
     private Venue venue;
-    @SerializedName("official")
-    @Expose
-    private Official official;
+//    @SerializedName("official")
+//    @Expose
+//    private Official official;
     @SerializedName("toss")
     @Expose
     private Toss toss;
@@ -119,13 +119,13 @@ public class MatchDetail {
         this.venue = venue;
     }
 
-    public Official getOfficial() {
-        return official;
-    }
-
-    public void setOfficial(Official official) {
-        this.official = official;
-    }
+//    public Official getOfficial() {
+////        return official;
+////    }
+////
+////    public void setOfficial(Official official) {
+////        this.official = official;
+////    }
 
     public Toss getToss() {
         return toss;

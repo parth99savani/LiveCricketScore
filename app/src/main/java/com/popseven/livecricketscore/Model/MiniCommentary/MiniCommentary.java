@@ -1,3 +1,4 @@
+
 package com.popseven.livecricketscore.Model.MiniCommentary;
 
 import java.util.List;
@@ -33,21 +34,24 @@ public class MiniCommentary {
     @SerializedName("bat_team")
     @Expose
     private BatTeam batTeam;
+    @SerializedName("bow_team")
+    @Expose
+    private BowTeam bowTeam;
     @SerializedName("batsman")
     @Expose
     private List<Batsman> batsman = null;
     @SerializedName("bowler")
     @Expose
     private List<Bowler> bowler = null;
-    @SerializedName("proj_scr")
-    @Expose
-    private String projScr;
     @SerializedName("crr")
     @Expose
     private String crr;
     @SerializedName("rrr")
     @Expose
     private String rrr;
+    @SerializedName("overs_left")
+    @Expose
+    private String oversLeft;
     @SerializedName("target")
     @Expose
     private String target;
@@ -157,6 +161,14 @@ public class MiniCommentary {
         this.batTeam = batTeam;
     }
 
+    public BowTeam getBowTeam() {
+        return bowTeam;
+    }
+
+    public void setBowTeam(BowTeam bowTeam) {
+        this.bowTeam = bowTeam;
+    }
+
     public List<Batsman> getBatsman() {
         return batsman;
     }
@@ -173,14 +185,6 @@ public class MiniCommentary {
         this.bowler = bowler;
     }
 
-    public String getProjScr() {
-        return projScr;
-    }
-
-    public void setProjScr(String projScr) {
-        this.projScr = projScr;
-    }
-
     public String getCrr() {
         return crr;
     }
@@ -195,6 +199,14 @@ public class MiniCommentary {
 
     public void setRrr(String rrr) {
         this.rrr = rrr;
+    }
+
+    public String getOversLeft() {
+        return oversLeft;
+    }
+
+    public void setOversLeft(String oversLeft) {
+        this.oversLeft = oversLeft;
     }
 
     public String getTarget() {

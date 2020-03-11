@@ -285,127 +285,133 @@ public class TeamSCFragment extends Fragment {
                 //pass response
                 Scorecard scorecard = gson.fromJson(response, Scorecard.class);
 
-                if (scorecard.getInnings().size() > 0) {
+                if (scorecard==null){
 
-                    for (int i = 0; i < scorecard.getInnings().size(); i++) {
-                        if (teamId.equals(scorecard.getInnings().get(i).getBatTeamId())) {
-                            team1InningList.add(scorecard.getInnings().get(i));
+                }else {
+                    if (scorecard.getInnings().size() > 0) {
+
+                        for (int i = 0; i < scorecard.getInnings().size(); i++) {
+                            if (teamId.equals(scorecard.getInnings().get(i).getBatTeamId())) {
+                                team1InningList.add(scorecard.getInnings().get(i));
+                            }
                         }
-                    }
 
-                    if (team1InningList.size() == 1) {
-                        llInning2.setVisibility(View.GONE);
-                        txtInning.setVisibility(View.GONE);
-                        txtInning2.setVisibility(View.GONE);
+                        if (team1InningList.size() == 1) {
+                            llInning2.setVisibility(View.GONE);
+                            txtInning.setVisibility(View.GONE);
+                            txtInning2.setVisibility(View.GONE);
 
-                        batsmanListTeam1In1.addAll(team1InningList.get(0).getBatsmen());
-                        textviewExtrasRun.setText(team1InningList.get(0).getExtras().getT());
-                        txtTeamScore.setText(team1InningList.get(0).getScore() + "-" + team1InningList.get(0).getWkts() + " (" + team1InningList.get(0).getOvr() + ")");
+                            batsmanListTeam1In1.addAll(team1InningList.get(0).getBatsmen());
+                            textviewExtrasRun.setText(team1InningList.get(0).getExtras().getT());
+                            txtTeamScore.setText(team1InningList.get(0).getScore() + "-" + team1InningList.get(0).getWkts() + " (" + team1InningList.get(0).getOvr() + ")");
 
-                        if (team1InningList.get(0).getNextBatsman() == null) {
+                            if (team1InningList.get(0).getNextBatsman() == null) {
 
-                        } else {
-                            String[] elements = team1InningList.get(0).getNextBatsman().split(",");
+                            } else {
+                                String[] elements = team1InningList.get(0).getNextBatsman().split(",");
 
-                            List<String> nextBatsmanList = Arrays.asList(elements);
+                                List<String> nextBatsmanList = Arrays.asList(elements);
 
-                            List<String> nextBatNameList = new ArrayList<>();
+                                List<String> nextBatNameList = new ArrayList<>();
 
-                            for (int i = 0; i < nextBatsmanList.size(); i++) {
-                                for (int j = 0; j < playerList.size(); j++) {
-                                    if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
-                                        nextBatNameList.add(playerList.get(j).getName());
+                                for (int i = 0; i < nextBatsmanList.size(); i++) {
+                                    for (int j = 0; j < playerList.size(); j++) {
+                                        if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
+                                            nextBatNameList.add(playerList.get(j).getName());
+                                        }
                                     }
                                 }
+
+                                String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+
+                                textviewNextBatsman.setText(nextBatsman);
                             }
 
-                            String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+                            adapter.notifyDataSetChanged();
 
-                            textviewNextBatsman.setText(nextBatsman);
-                        }
+                            bowlerListTeam1In1.addAll(team1InningList.get(0).getBowlers());
+                            adapter3.notifyDataSetChanged();
 
-                        adapter.notifyDataSetChanged();
+                        } else if (team1InningList.size() == 2) {
+                            batsmanListTeam1In1.addAll(team1InningList.get(0).getBatsmen());
+                            textviewExtrasRun.setText(team1InningList.get(0).getExtras().getT());
+                            txtTeamScore.setText(team1InningList.get(0).getScore() + "-" + team1InningList.get(0).getWkts() + " (" + team1InningList.get(0).getOvr() + ")");
 
-                        bowlerListTeam1In1.addAll(team1InningList.get(0).getBowlers());
-                        adapter3.notifyDataSetChanged();
+                            if (team1InningList.get(0).getNextBatsman() == null) {
 
-                    } else if (team1InningList.size() == 2) {
-                        batsmanListTeam1In1.addAll(team1InningList.get(0).getBatsmen());
-                        textviewExtrasRun.setText(team1InningList.get(0).getExtras().getT());
-                        txtTeamScore.setText(team1InningList.get(0).getScore() + "-" + team1InningList.get(0).getWkts() + " (" + team1InningList.get(0).getOvr() + ")");
+                            } else {
+                                String[] elements = team1InningList.get(0).getNextBatsman().split(",");
 
-                        if (team1InningList.get(0).getNextBatsman() == null) {
+                                List<String> nextBatsmanList = Arrays.asList(elements);
 
-                        } else {
-                            String[] elements = team1InningList.get(0).getNextBatsman().split(",");
+                                List<String> nextBatNameList = new ArrayList<>();
 
-                            List<String> nextBatsmanList = Arrays.asList(elements);
-
-                            List<String> nextBatNameList = new ArrayList<>();
-
-                            for (int i = 0; i < nextBatsmanList.size(); i++) {
-                                for (int j = 0; j < playerList.size(); j++) {
-                                    if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
-                                        nextBatNameList.add(playerList.get(j).getName());
+                                for (int i = 0; i < nextBatsmanList.size(); i++) {
+                                    for (int j = 0; j < playerList.size(); j++) {
+                                        if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
+                                            nextBatNameList.add(playerList.get(j).getName());
+                                        }
                                     }
                                 }
+
+                                String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+
+                                textviewNextBatsman.setText(nextBatsman);
                             }
 
-                            String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+                            adapter.notifyDataSetChanged();
 
-                            textviewNextBatsman.setText(nextBatsman);
-                        }
-
-                        adapter.notifyDataSetChanged();
-
-                        bowlerListTeam1In1.addAll(team1InningList.get(0).getBowlers());
-                        adapter3.notifyDataSetChanged();
+                            bowlerListTeam1In1.addAll(team1InningList.get(0).getBowlers());
+                            adapter3.notifyDataSetChanged();
 
 
-                        batsmanListTeam1In2.addAll(team1InningList.get(1).getBatsmen());
-                        textviewExtrasRun2.setText(team1InningList.get(1).getExtras().getT());
-                        txtTeamScore2.setText(team1InningList.get(1).getScore() + "-" + team1InningList.get(1).getWkts() + " (" + team1InningList.get(1).getOvr() + ")");
-                        if (team1InningList.get(1).getNextBatsman() == null) {
+                            batsmanListTeam1In2.addAll(team1InningList.get(1).getBatsmen());
+                            textviewExtrasRun2.setText(team1InningList.get(1).getExtras().getT());
+                            txtTeamScore2.setText(team1InningList.get(1).getScore() + "-" + team1InningList.get(1).getWkts() + " (" + team1InningList.get(1).getOvr() + ")");
+                            if (team1InningList.get(1).getNextBatsman() == null) {
 
-                        } else {
+                            } else {
 
-                            String[] elements = team1InningList.get(1).getNextBatsman().split(",");
+                                String[] elements = team1InningList.get(1).getNextBatsman().split(",");
 
-                            List<String> nextBatsmanList = Arrays.asList(elements);
+                                List<String> nextBatsmanList = Arrays.asList(elements);
 
-                            List<String> nextBatNameList = new ArrayList<>();
+                                List<String> nextBatNameList = new ArrayList<>();
 
-                            for (int i = 0; i < nextBatsmanList.size(); i++) {
-                                for (int j = 0; j < playerList.size(); j++) {
-                                    if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
-                                        nextBatNameList.add(playerList.get(j).getName());
+                                for (int i = 0; i < nextBatsmanList.size(); i++) {
+                                    for (int j = 0; j < playerList.size(); j++) {
+                                        if (nextBatsmanList.get(i).equals(playerList.get(j).getId())) {
+                                            nextBatNameList.add(playerList.get(j).getName());
+                                        }
                                     }
                                 }
+
+                                String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+
+                                textviewNextBatsman2.setText(nextBatsman);
                             }
 
-                            String nextBatsman = nextBatNameList.toString().replace("[", "").replace("]", "");
+                            adapter2.notifyDataSetChanged();
 
-                            textviewNextBatsman2.setText(nextBatsman);
+                            bowlerListTeam1In2.addAll(team1InningList.get(1).getBowlers());
+                            adapter4.notifyDataSetChanged();
+
+                            llInning2.setVisibility(View.VISIBLE);
+                            txtInning.setVisibility(View.VISIBLE);
+                            txtInning2.setVisibility(View.VISIBLE);
+
+                        }else if(team1InningList.size() == 0){
+                            scrollView.setVisibility(View.GONE);
                         }
 
-                        adapter2.notifyDataSetChanged();
+                        scrollView.setVisibility(View.VISIBLE);
 
-                        bowlerListTeam1In2.addAll(team1InningList.get(1).getBowlers());
-                        adapter4.notifyDataSetChanged();
-
-                        llInning2.setVisibility(View.VISIBLE);
-                        txtInning.setVisibility(View.VISIBLE);
-                        txtInning2.setVisibility(View.VISIBLE);
-
-                    }else if(team1InningList.size() == 0){
+                    } else {
                         scrollView.setVisibility(View.GONE);
                     }
-
-                    scrollView.setVisibility(View.VISIBLE);
-
-                } else {
-                    scrollView.setVisibility(View.GONE);
                 }
+
+
 
 
             }

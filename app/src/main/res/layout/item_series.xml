@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/txtSeriesName"
-        android:text="ICC World Cup 2020"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_round_rectangle"

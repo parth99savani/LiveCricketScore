@@ -7,10 +7,11 @@
         android:id="@+id/txtGroupName"
         android:text="Group A"
         android:textSize="16sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorGreen"
         android:background="@color/backgroundGray"
         android:paddingVertical="8dp"
         android:paddingHorizontal="10dp"
+        android:fontFamily="@font/circularstd_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

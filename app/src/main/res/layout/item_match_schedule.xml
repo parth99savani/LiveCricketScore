@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/txtSeriesNo"
-            android:text="1st Match"
+            android:text=""
             android:layout_marginLeft="5dp"
             android:textSize="12sp"
             android:singleLine="true"
@@ -44,14 +44,24 @@
                     android:id="@+id/btnTeam1"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:text="CSK"
-                    android:textSize="20sp"
+                    android:text=""
+                    android:textSize="16sp"
                     android:fontFamily="@font/circular_std_black"
                     android:gravity="center"
                     android:textColor="@android:color/white"
                     android:background="@drawable/bg_circle"
                     android:backgroundTint="@color/colorAccent"
                     android:layout_margin="10dp"/>
+
+                <TextView
+                    android:id="@+id/txtTeam1Score"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/circularstd_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -77,8 +87,8 @@
                     android:id="@+id/btnTeam2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:text="MI"
-                    android:textSize="20sp"
+                    android:text=""
+                    android:textSize="16sp"
                     android:fontFamily="@font/circular_std_black"
                     android:gravity="center"
                     android:textColor="@android:color/white"
@@ -86,15 +96,26 @@
                     android:backgroundTint="@color/colorPrimary"
                     android:layout_margin="10dp"/>
 
+                <TextView
+                    android:id="@+id/txtTeam2Score"
+                    android:text=""
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/circularstd_medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/txtMatchDate"
-            android:text="24th March 2020, 5:30 PM"
+            android:text=""
             android:textSize="12sp"
             android:singleLine="true"
+            android:layout_marginTop="5dp"
             android:textColor="@color/colorTextGray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

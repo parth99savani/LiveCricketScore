@@ -101,6 +101,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                     holder.btnTeam1.setBackground(buttonDrawable);
+                    break;
+                }else {
+                    Drawable buttonDrawable = holder.btnTeam1.getBackground();
+                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                    DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorAccent));
+                    holder.btnTeam1.setBackground(buttonDrawable);
                 }
             }
             holder.btnTeam2.setText(item.getTeam2().getSName());
@@ -109,6 +115,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                     Drawable buttonDrawable = holder.btnTeam2.getBackground();
                     buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                     DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                    holder.btnTeam2.setBackground(buttonDrawable);
+                    break;
+                }else {
+                    Drawable buttonDrawable = holder.btnTeam2.getBackground();
+                    buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                    DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorPrimary));
                     holder.btnTeam2.setBackground(buttonDrawable);
                 }
             }
@@ -125,6 +137,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                         holder.btnTeam1.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam1.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorAccent));
+                        holder.btnTeam1.setBackground(buttonDrawable);
                     }
                 }
             } else if (item.getBatTeam().getId().equals(item.getTeam2().getId())) {
@@ -134,6 +152,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                         Drawable buttonDrawable = holder.btnTeam1.getBackground();
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                        holder.btnTeam1.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam1.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorAccent));
                         holder.btnTeam1.setBackground(buttonDrawable);
                     }
                 }
@@ -154,6 +178,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
                         holder.btnTeam2.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam2.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorPrimary));
+                        holder.btnTeam2.setBackground(buttonDrawable);
                     }
                 }
             } else if (item.getBowTeam().getId().equals(item.getTeam2().getId())) {
@@ -163,6 +193,12 @@ public class LiveMatchAdapter extends RecyclerView.Adapter<LiveMatchAdapter.MyVi
                         Drawable buttonDrawable = holder.btnTeam2.getBackground();
                         buttonDrawable = DrawableCompat.wrap(buttonDrawable);
                         DrawableCompat.setTint(buttonDrawable, Color.parseColor(colorList.get(j).getColorCode()));
+                        holder.btnTeam2.setBackground(buttonDrawable);
+                        break;
+                    }else {
+                        Drawable buttonDrawable = holder.btnTeam2.getBackground();
+                        buttonDrawable = DrawableCompat.wrap(buttonDrawable);
+                        DrawableCompat.setTint(buttonDrawable, context.getResources().getColor(R.color.colorPrimary));
                         holder.btnTeam2.setBackground(buttonDrawable);
                     }
                 }
