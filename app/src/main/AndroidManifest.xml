@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MatchDetailsActivity"></activity>
+        <activity android:name=".HighlightPlayActivity"></activity>
+        <activity android:name=".MatchDetailsActivity" />
         <activity android:name=".SeriesScheduleActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
