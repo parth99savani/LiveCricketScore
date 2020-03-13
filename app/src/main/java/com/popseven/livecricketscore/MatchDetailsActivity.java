@@ -93,6 +93,13 @@ public class MatchDetailsActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabTextColors(Color.parseColor("#ffffff"), Color.parseColor("#FEE715"));
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void loadData(final String matchId, final String seriesId) {

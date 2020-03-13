@@ -96,6 +96,8 @@ public class UpcomingSeriesAdapter extends RecyclerView.Adapter<UpcomingSeriesAd
 
         holder.recyclerViewSeriesMatch.setAdapter(adapter);
 
+        holder.recyclerViewSeriesMatch.setNestedScrollingEnabled(false);
+
         final String finalSeriesName = seriesName;
         holder.txtSeriesName.setOnClickListener(new View.OnClickListener() {
             @Override

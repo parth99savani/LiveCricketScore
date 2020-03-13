@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_round_rectangle"
         android:textSize="12sp"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:paddingVertical="5dp"
         android:paddingHorizontal="20dp"
         android:layout_centerHorizontal="true"

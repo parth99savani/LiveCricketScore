@@ -7,9 +7,95 @@
     android:background="@android:color/white"
     tools:context=".HighlightPlayActivity">
 
-    <VideoView
-        android:id="@+id/myVideoView"
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/exoplayer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:controller_layout_id="@layout/custom_playback_control"
+        app:show_timeout="0"
+        app:bar_height="3dp"
+        app:resize_mode="fixed_width"
+        app:shutter_background_color="@color/colorPrimary"
+        app:scrubber_color="@android:color/white"
+        app:played_color="@android:color/white"
+        app:show_buffering="when_playing"
+        app:fastforward_increment="10000"
+        app:rewind_increment="10000"/>
+
+    <TextView
+        android:id="@+id/txtVideoName"
+        android:text=""
+        android:textColor="@color/colorPrimary"
+        android:background="@color/backgroundGray"
+        android:fontFamily="@font/circularstd_medium"
+        android:lineSpacingExtra="5dp"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_below="@+id/exoplayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:src="@drawable/ic_back"
+        android:tint="@android:color/white"
+        android:background="@android:color/transparent"
+        android:layout_width="?actionBarSize"
+        android:layout_height="?actionBarSize"/>
+
+    <ScrollView
+        android:layout_below="@+id/txtVideoName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtInternational"
+                android:layout_below="@+id/cLayout"
+                android:layout_marginTop="15dp"
+                android:paddingHorizontal="10dp"
+                android:text="International Match Highlights"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/circular_std_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHighlights"
+                android:layout_below="@+id/txtInternational"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtIpl"
+                android:layout_below="@+id/recyclerViewHighlights"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="10dp"
+                android:text="IPL Highlights"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/circular_std_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHighlightsIpl"
+                android:layout_below="@+id/txtIpl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

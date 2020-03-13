@@ -34,14 +34,12 @@ public class HighlightAdapter extends RecyclerView.Adapter<HighlightAdapter.MyVi
 
         private ImageView imageViewThumb;
         private TextView txtHighlightName;
-        private ImageButton btnPlay;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageViewThumb = itemView.findViewById(R.id.imageViewThumb);
             txtHighlightName = itemView.findViewById(R.id.txtHighlightName);
-            btnPlay = itemView.findViewById(R.id.btnPlay);
         }
     }
 
@@ -64,12 +62,10 @@ public class HighlightAdapter extends RecyclerView.Adapter<HighlightAdapter.MyVi
                 .load(content.getImageUrl())
                 .into(holder.imageViewThumb);
 
-        holder.btnPlay.setClickable(false);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onHighlightSelected(content.getMediaId());
+                listener.onHighlightSelected(content.getMediaId(),content.getTitle());
             }
         });
 
@@ -81,7 +77,7 @@ public class HighlightAdapter extends RecyclerView.Adapter<HighlightAdapter.MyVi
     }
 
     public interface HighlightAdapterListener {
-        void onHighlightSelected(String mediaId);
+        void onHighlightSelected(String mediaId, String title);
     }
 
 }
