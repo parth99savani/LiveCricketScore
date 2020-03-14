@@ -1,6 +1,7 @@
 package com.popseven.livecricketscore;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -141,8 +142,7 @@ public class PointTableActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(PointTableActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("PointTableActivity","Error" + error.toString());
             }
         });
 
@@ -199,8 +199,7 @@ public class PointTableActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(PointTableActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("PointTableActivity","Error" + error.toString());
             }
         });
 
@@ -270,8 +269,7 @@ public class PointTableActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(PointTableActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("PointTableActivity","Error" + error.toString());
             }
         });
 

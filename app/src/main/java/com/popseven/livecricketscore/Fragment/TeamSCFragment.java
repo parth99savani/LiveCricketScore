@@ -3,6 +3,7 @@ package com.popseven.livecricketscore.Fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -256,7 +257,7 @@ public class TeamSCFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("TeamSCFragment","Error" + error.toString());
             }
         });
 
@@ -419,7 +420,7 @@ public class TeamSCFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("TeamSCFragment","Error" + error.toString());
             }
         });
 

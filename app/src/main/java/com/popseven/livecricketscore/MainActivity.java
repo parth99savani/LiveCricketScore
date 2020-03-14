@@ -2,7 +2,11 @@ package com.popseven.livecricketscore;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -13,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.popseven.livecricketscore.Adapter.ScreenSlidePagerAdapter;
@@ -33,27 +38,16 @@ import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recycler;
-    private static final String URL_DATA = "http://mapps.cricbuzz.com/cbzios/match/livematches";
-    //private RecyclerView.Adapter adapter;
-    private List<Match> itemList;
     private ViewPager viewPager;
     private BubbleNavigationLinearView bottomNavigationViewLinear;
+    private Handler handler = new Handler();
+    private int apiDelayed = 10000; //5 seconds
+    private Runnable runnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //recycler = findViewById(R.id.recycler);
-
-//        recycler.setHasFixedSize(true);
-//        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
-
-        itemList = new ArrayList<>();
-
-        //loadData();
 
         viewPager = findViewById(R.id.view_pager);
         bottomNavigationViewLinear = findViewById(R.id.bottom_navigation_view_linear);
@@ -89,56 +83,47 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(position, true);
             }
         });
+
+        checkConnection();
     }
 
-    private void loadData() {
+    @Override
+    public void onResume() {
+        super.onResume();
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+        handler.postDelayed(runnable = new Runnable() {
+            public void run() {
+                //do your function;
+                //progressBar.setVisibility(View.VISIBLE);
+                checkConnection();
+                handler.postDelayed(runnable, apiDelayed);
+            }
+        }, apiDelayed); // so basically after your getHeroes(), from next time it will be 5 sec repeated
+    }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_DATA, new Response.Listener<String>() {
+    private void checkConnection() {
+        new CheckNetworkConnection(this, new CheckNetworkConnection.OnConnectionCallback() {
             @Override
-            public void onResponse(String response) {
-
-                progressDialog.dismiss();
-
-                //JSONObject jsonObject = new JSONObject(response);
-
-                //JSONArray array = jsonObject.getJSONArray("items");
-
-                //JSONArray array = new JSONArray(response);
-
-                    /*for (int i = 0; i < array.length(); i++){
-
-                        JSONObject jo = array.getJSONObject(i);
-
-                        Match item = new Match(jo.getString("booking_name"), jo.getString("from_date"),
-                                jo.getString("to_date"),jo.getString("event_name"));
-                        itemList.add(item);
-
-                    }*/
-
-                GsonBuilder gsonBuilder = new GsonBuilder();
-                Gson gson = gsonBuilder.create();
-                // pass response
-                Livematches users = gson.fromJson(response, Livematches.class);
-
-//                adapter = new ItemAdapter(users.getMatches(), MainActivity.this);
-//                recycler.setAdapter(adapter);
+            public void onConnectionSuccess() {
 
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(MainActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+            public void onConnectionFail(String msg) {
+                Snackbar snackbar = Snackbar.make(MainActivity.this.findViewById(android.R.id.content), "No, Internet Connection!", Snackbar.LENGTH_SHORT);
+                View snackbarView = snackbar.getView();
+                snackbarView.setBackgroundColor(MainActivity.this.getResources().getColor(R.color.colorAccent));
+                TextView textView = snackbarView.findViewById(R.id.snackbar_text);
+                textView.setTextColor(MainActivity.this.getResources().getColor(R.color.colorPrimary));
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                snackbar.show();
             }
-        });
+        }).execute();
+    }
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+    @Override
+    public void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable); //stop handler when activity not visible
     }
 }

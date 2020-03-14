@@ -203,7 +203,6 @@ public class HighlightPlayActivity extends AppCompatActivity {
         }
 
 
-
         fullscreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -269,7 +268,7 @@ public class HighlightPlayActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(HighlightPlayActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("HighlightPlayActivity","Error" + error.toString());
 
             }
         });
@@ -308,8 +307,7 @@ public class HighlightPlayActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(HighlightPlayActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("HighlightPlayActivity","Error" + error.toString());
             }
         });
 

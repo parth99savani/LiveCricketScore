@@ -3,6 +3,7 @@ package com.popseven.livecricketscore;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -349,7 +350,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MatchDetailsActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("MatchDetailsActivity","Error" + error.toString());
             }
         });
 

@@ -3,12 +3,19 @@ package com.popseven.livecricketscore.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,17 +34,10 @@ import com.popseven.livecricketscore.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private TextView txtLiveMatch;
     private RecyclerView recyclerViewLiveMatches;
@@ -49,6 +49,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private Runnable runnable;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefresh;
+    private LinearLayout ll;
+    private RelativeLayout rlNoLive;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,6 +67,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         recyclerViewLiveMatches = view.findViewById(R.id.recyclerViewLiveMatches);
         progressBar = view.findViewById(R.id.progressBar);
         swipeRefresh = view.findViewById(R.id.swipeRefresh);
+        ll = view.findViewById(R.id.ll);
+        rlNoLive = view.findViewById(R.id.rlNoLive);
 
         matchList = new ArrayList<>();
 
@@ -72,7 +76,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             @Override
             public void onLiveMatchSelected(String matchId) {
 
-                presentActivity(getView(),matchId);
+                presentActivity(getView(), matchId);
 
 //                Intent intent = new Intent(getActivity(), MatchScoreActivity.class);
 //                intent.putExtra("matchId", matchId);
@@ -160,6 +164,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     }
                 }
 
+                if (matchList.size()==0){
+                    ll.setVisibility(View.GONE);
+                    rlNoLive.setVisibility(View.VISIBLE);
+                }else {
+                    ll.setVisibility(View.VISIBLE);
+                    rlNoLive.setVisibility(View.GONE);
+                }
 
                 //matchList.addAll(livematches.getMatches());
 
@@ -189,8 +200,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("HomeFragment", "Error" + error.toString());
             }
         });
 

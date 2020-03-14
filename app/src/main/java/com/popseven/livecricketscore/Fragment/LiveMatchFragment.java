@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -428,8 +429,7 @@ public class LiveMatchFragment extends Fragment implements SwipeRefreshLayout.On
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-            }
+                Log.e("LiveMatchFragment","Error" + error.toString());            }
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());

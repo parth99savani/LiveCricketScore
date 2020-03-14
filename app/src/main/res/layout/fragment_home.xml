@@ -7,6 +7,7 @@
     tools:context=".Fragment.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -37,6 +38,33 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rlNoLive"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:src="@drawable/bg_stadium"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:text="No live match"
+            android:textSize="22sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/circular_std_bold"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/imageView"
+            android:layout_marginBottom="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"

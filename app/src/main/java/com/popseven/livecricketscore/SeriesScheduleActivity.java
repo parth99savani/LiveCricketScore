@@ -2,6 +2,7 @@ package com.popseven.livecricketscore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -129,8 +130,7 @@ public class SeriesScheduleActivity extends AppCompatActivity implements Schedul
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(SeriesScheduleActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-
+                Log.e("SeriesScheduleActivity","Error" + error.toString());
             }
         });
 

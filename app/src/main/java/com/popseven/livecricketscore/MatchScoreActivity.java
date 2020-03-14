@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
@@ -358,7 +359,7 @@ public class MatchScoreActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MatchScoreActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("MatchScoreActivity","Error" + error.toString());
             }
         });
 

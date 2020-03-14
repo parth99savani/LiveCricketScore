@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -248,7 +249,7 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("LiveFragment","Error" + error.toString());
             }
         });
 
@@ -482,7 +483,7 @@ public class LiveFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("LiveFragment","Error" + error.toString());
             }
         });
 
