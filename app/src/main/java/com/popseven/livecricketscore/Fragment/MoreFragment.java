@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.popseven.livecricketscore.MensRankingActivity;
 import com.popseven.livecricketscore.PointTableActivity;
 import com.popseven.livecricketscore.R;
+import com.popseven.livecricketscore.RankingActivity;
 import com.popseven.livecricketscore.ScheduleActivity;
 
 import androidx.cardview.widget.CardView;
@@ -55,7 +57,7 @@ public class MoreFragment extends Fragment {
         cardviewRanking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getActivity(), RankingActivity.class));
             }
         });
 

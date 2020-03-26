@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.WBowlingRankingFragment">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/togglePlayersRank"
+            custom:toggleWidth="100dp"
+            android:fontFamily="@font/circularstd_medium"
+            custom:cornerRadius="20dp"
+            android:elevation="5dp"
+            custom:textToggleLeft="CSK"
+            custom:textToggleRight="MI"
+            style="@style/MyCustomText"
+            custom:activeBgColor="@android:color/black"
+            custom:activeTextColor="@android:color/white"
+            custom:inactiveBgColor="@color/backgroundGray"
+            custom:inactiveTextColor="@android:color/black"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_below="@+id/ll1"
+        android:background="@color/backgroundGray"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewRank"
+            android:text="Rank"
+            android:singleLine="true"
+            android:padding="3dp"
+            android:layout_margin="8dp"
+            android:textSize="@dimen/textSize12"
+            android:textColor="@color/colorTextGray" />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewPlayer"
+            android:text="Player"
+            android:singleLine="true"
+            android:padding="3dp"
+            android:layout_margin="8dp"
+            android:textSize="@dimen/textSize12"
+            android:textColor="@color/colorTextGray" />
+
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textviewRating"
+            android:text="Rating"
+            android:singleLine="true"
+            android:padding="3dp"
+            android:layout_margin="8dp"
+            android:textSize="@dimen/textSize12"
+            android:textColor="@color/colorTextGray" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerRanking"
+        android:layout_below="@id/ll"
+        android:background="@android:color/white"
+        android:paddingHorizontal="5dp" />
+
+</RelativeLayout>

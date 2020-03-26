@@ -14,11 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HighlightPlayActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
-        <activity android:name=".MatchDetailsActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SeriesScheduleActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SplashActivity"
+        <activity android:name=".WomensRankingActivity"></activity>
+        <activity android:name=".RankingActivity" />
+        <activity android:name=".MensRankingActivity" />
+        <activity
+            android:name=".HighlightPlayActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".MatchDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SeriesScheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +37,17 @@
         </activity>
         <activity
             android:name=".MatchScoreActivity"
-            android:theme="@style/AppTheme.Transparent" android:screenOrientation="portrait"/>
-        <activity android:name=".PointTableActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ScheduleActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent" />
+        <activity
+            android:name=".PointTableActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScheduleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

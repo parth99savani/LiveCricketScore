@@ -38,96 +38,96 @@
                     android:layout_height="wrap_content"/>
 
                 <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textviewBatsman"
+                    android:text="Batsman"
+                    android:singleLine="true"
+                    android:padding="3dp"
+                    android:layout_margin="8dp"
+                    android:textSize="@dimen/textSize12"
+                    android:textColor="@color/colorTextGray"
+                    android:layout_toLeftOf="@+id/relative" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relative"
+                    android:layout_alignParentRight="true">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:gravity="end"
+                        android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textviewBatsman"
-                        android:text="Batsman"
-                        android:singleLine="true"
+                        android:id="@+id/textviewRun"
+                        android:text="R"
                         android:padding="3dp"
-                        android:layout_margin="8dp"
-                        android:textSize="@dimen/textSize12"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginHorizontal="2dp"
                         android:textColor="@color/colorTextGray"
-                        android:layout_toLeftOf="@+id/relative" />
+                        android:textSize="@dimen/textSize12"
+                        />
 
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:gravity="end"
+                        android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/relative"
-                        android:layout_alignParentRight="true">
+                        android:id="@+id/textviewBowl"
+                        android:text="B"
+                        android:padding="3dp"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:textColor="@color/colorTextGray"
+                        android:textSize="@dimen/textSize12"
+                        />
 
-                        <TextView
-                            android:gravity="end"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textviewRun"
-                            android:text="R"
-                            android:padding="3dp"
-                            android:layout_marginVertical="8dp"
-                            android:layout_marginHorizontal="2dp"
-                            android:textColor="@color/colorTextGray"
-                            android:textSize="@dimen/textSize12"
-                            />
+                    <TextView
+                        android:gravity="end"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textviewFour"
+                        android:text="4s"
+                        android:padding="3dp"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:textColor="@color/colorTextGray"
+                        android:textSize="@dimen/textSize12"
+                        />
 
-                        <TextView
-                            android:gravity="end"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textviewBowl"
-                            android:text="B"
-                            android:padding="3dp"
-                            android:layout_marginVertical="8dp"
-                            android:layout_marginHorizontal="2dp"
-                            android:textColor="@color/colorTextGray"
-                            android:textSize="@dimen/textSize12"
-                            />
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:id="@+id/textviewSix"
+                        android:text="6s"
+                        android:padding="3dp"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginHorizontal="2dp"
+                        android:textColor="@color/colorTextGray"
+                        android:textSize="@dimen/textSize12"
+                        />
 
-                        <TextView
-                            android:gravity="end"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textviewFour"
-                            android:text="4s"
-                            android:padding="3dp"
-                            android:layout_marginVertical="8dp"
-                            android:layout_marginHorizontal="2dp"
-                            android:textColor="@color/colorTextGray"
-                            android:textSize="@dimen/textSize12"
-                            />
+                    <TextView
+                        android:id="@+id/textviewStrikeRate"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginVertical="8dp"
+                        android:gravity="end"
+                        android:padding="3dp"
+                        android:text="SR"
+                        android:textColor="@color/colorTextGray"
+                        android:textSize="@dimen/textSize12" />
 
-                        <TextView
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:id="@+id/textviewSix"
-                            android:text="6s"
-                            android:padding="3dp"
-                            android:layout_marginVertical="8dp"
-                            android:layout_marginHorizontal="2dp"
-                            android:textColor="@color/colorTextGray"
-                            android:textSize="@dimen/textSize12"
-                            />
+                </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textviewStrikeRate"
-                            android:layout_width="55dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="2dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginVertical="8dp"
-                            android:gravity="end"
-                            android:padding="3dp"
-                            android:text="SR"
-                            android:textColor="@color/colorTextGray"
-                            android:textSize="@dimen/textSize12" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
+            </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"

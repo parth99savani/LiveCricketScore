@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".WomensRankingActivity">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:src="@drawable/ic_back"
+            android:tint="@android:color/white"
+            android:background="@android:color/transparent"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"/>
+
+        <TextView
+            android:id="@+id/txtName"
+            android:text="ICC Women's Ranking"
+            android:layout_marginLeft="5dp"
+            android:textSize="18sp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/circularstd_medium"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutRanking"
+        android:layout_below="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        android:elevation="10dp"
+        app:tabIndicatorColor="@color/colorPrimary"
+        android:background="@color/colorPrimary"
+        style="@style/MyCustomTabLayout"
+        app:tabMode="scrollable">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerRanking"
+        android:layout_below="@+id/tabLayoutRanking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</RelativeLayout>

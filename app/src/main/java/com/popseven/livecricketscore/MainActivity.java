@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private BubbleNavigationLinearView bottomNavigationViewLinear;
     private Handler handler = new Handler();
-    private int apiDelayed = 10000; //5 seconds
+    private int apiDelayed = 10000; //10 seconds
     private Runnable runnable;
 
     @Override
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 checkConnection();
                 handler.postDelayed(runnable, apiDelayed);
             }
-        }, apiDelayed); // so basically after your getHeroes(), from next time it will be 5 sec repeated
+        }, apiDelayed);
     }
 
     private void checkConnection() {
